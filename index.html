@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamlit Prototyping with VS Code and Cline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+            color: #555;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .box:hover {
+            background-color: #f0f0f0;
+        }
+
+        .box h2 {
+            margin-top: 0;
+            color: #444;
+        }
+
+        .content {
+            display: none;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #333;
+        }
+
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            color: #222;
+        }
+
+        h2 {
+            margin-top: 25px;
+            color: #444;
+        }
+
+        h3 {
+            margin-top: 15px;
+            color: #555;
+        }
+
+        p {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background-color: #f0f0f0;
+            padding: 3px 6px;
+            border-radius: 6px;
+            color: #333;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Streamlit Prototyping with VS Code and Cline</h1>
+
+    <p>Streamlit is an open-source Python library that makes it easy to create beautiful, custom web apps for machine learning and data science. It's designed for rapid prototyping and allows you to turn data scripts into shareable web applications in minutes. Streamlit's simplicity and ease of use make it an excellent choice for quickly building interactive tools and dashboards, even with limited coding experience.</p>
+
+    <div class="container">
+        <div class="box" onclick="toggleContent('part1')">
+            <h2><i class="fas fa-laptop"></i> Part 1: Environment Setup for Streamlit</h2>
+        </div>
+        <div id="part1" class="content">
+            <h3>1.1 Installing Python:</h3>
+            <ul>
+                <li><strong>Check if Python is already installed:</strong> Open your terminal and run <code>python --version</code> or <code>python3 --version</code>. If Python is installed, you'll see the version number.</li>
+                <li><strong>Download and install Python:</strong> If Python is not installed, download the latest version from the official Python website: <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+                <li><strong>Add Python to PATH:</strong> During the installation process, make sure to check the box that says "Add Python to PATH". This will allow you to run Python commands from your terminal.</li>
+            </ul>
+
+            <h3>1.2 Setting up VS Code:</h3>
+            <ul>
+                <li><strong>Installing VS Code:</strong> Download and install VS Code from the official website: <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+                <li><strong>Installing the Python extension for VS Code:</strong>
+                    <ul>
+                        <li>Open VS Code.</li>
+                        <li>Click on the Extensions icon in the Activity Bar (or press Ctrl+Shift+X).</li>
+                        <li>Search for "Python" and install the Microsoft Python extension.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>1.3 Creating a Virtual Environment:</h3>
+            <ul>
+                <li><strong>Purpose of virtual environments:</strong> Virtual environments isolate project dependencies, preventing conflicts between different projects.</li>
+                <li><strong>Creating a virtual environment:</strong>
+                    <ul>
+                        <li>Open your terminal and navigate to your project directory.</li>
+                        <li>Run the following command: <code>python -m venv .venv</code></li>
+                    </ul>
+                </li>
+                <li><strong>Activating the virtual environment:</strong>
+                    <ul>
+                        <li><strong>Windows:</strong> <code>.venv\\Scripts\\activate</code></li>
+                        <li><strong>macOS/Linux:</strong> <code>source .venv/bin/activate</code></li>
+                        <li>Your terminal prompt will change to indicate that the virtual environment is active (e.g., <code>(.venv) $</code>).</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>1.4 Installing Streamlit:</h3>
+            <ul>
+                <li><strong>Command to install Streamlit:</strong> With your virtual environment activated, run the following command: <code>pip install streamlit</code></li>
+                <li><strong>Verifying the installation:</strong> Run <code>streamlit hello</code>. This will launch a demo Streamlit app in your browser.</li>
+            </ul>
+
+            <h3>1.5 Installing Dependencies:</h3>
+            <ul>
+                <li><strong>Purpose of <code>requirements.txt</code>:</strong> The <code>requirements.txt</code> file lists all the Python packages that your project depends on.</li>
+                <li><strong>Command to install dependencies:</strong>
+                    <ul>
+                        <li>Make sure you have a <code>requirements.txt</code> file in your project directory.</li>
+                        <li>Run the following command: <code>pip install -r requirements.txt</code></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="box" onclick="toggleContent('part2')">
+            <h2><i class="fas fa-tools"></i> Part 2: Helpful Tool Introduction</h2>
+        </div>
+        <div id="part2" class="content">
+            <h3>2.1 VS Code Features:</h3>
+            <ul>
+                <li><strong>Code completion and IntelliSense:</strong> VS Code provides intelligent code completion suggestions and information about functions, classes, and variables as you type.</li>
+                <li><strong>Debugging tools:</strong> VS Code has a built-in debugger that allows you to step through your code, set breakpoints, and inspect variables.</li>
+                <li><strong>Integrated terminal:</strong> VS Code has an integrated terminal that allows you to run commands without leaving the editor.</li>
+                <li><strong>Source control with Git:</strong> VS Code has built-in support for Git, allowing you to manage your code repository, commit changes, and collaborate with others.</li>
+            </ul>
+
+            <h3>2.2 Cline Integration:</h3>
+            <ul>
+                <li><strong>How Cline can assist:</strong> Cline can help you with code generation, refactoring, and debugging. It can also provide suggestions for improving your code.</li>
+                <li><strong>Demonstrating Cline's capabilities:</strong>
+                    <ul>
+                        <li><strong>Generating a basic Streamlit app:** Ask Cline to "create a basic Streamlit app with a title and some text".</li>
+                        <li><strong>Adding a button:** Ask Cline to "add a button to the app that displays a message when clicked".</li>
+                        <li><strong>Refactoring code:** Select a section of code and ask Cline to "refactor this code to improve readability".</li>
+                    </ul>
+                </li>
+                <li><strong>Adding a tool:</strong> Explain how to use Cline to add a tool that does some function.</li>
+            </ul>
+
+            <h3>2.3 Cline Setup and API Key Configuration:</h3>
+            <ul>
+                <li><strong>Installing Cline:</strong>
+                    <ul>
+                        <li>Open VS Code.</li>
+                        <li>Click on the Extensions icon in the Activity Bar (or press Ctrl+Shift+X).</li>
+                        <li>Search for "Cline" and install the Cline extension.</li>
+                    </ul>
+                </li>
+                <li><strong>Setting the API Key:</strong>
+                    <ul>
+                        <li>After installing Cline, you'll need to set your API key to use its features.</li>
+                        <li>Open VS Code settings:
+                            <ul>
+                                <li>Go to File -> Preferences -> Settings (or Code -> Preferences -> Settings on macOS).</li>
+                            </ul>
+                        </li>
+                        <li>Search for "Cline API Key" in the settings.</li>
+                        <li>Enter your Cline API key in the input box.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>2.4 Streamlit Documentation:</h3>
+            <ul>
+                <li><strong>Official Streamlit documentation:</strong> <a href="https://docs.streamlit.io/">https://docs.streamlit.io/</a></li>
+                <li><strong>Finding information:</strong> The Streamlit documentation provides detailed information about all Streamlit components and APIs, as well as tutorials and examples.</li>
+            </ul>
+        </div>
+
+        <div class="box" onclick="toggleContent('part3')">
+            <h2><i class="fas fa-hands-on"></i> Part 3: Simple Hands-On</h2>
+        </div>
+        <div id="part3" class="content">
+            <h3>3.1 Creating a Basic Streamlit App:</h3>
+            <ul>
+                <li><strong>Create a new Python file:** Create a new file named <code>my_app.py</code> in your project directory.</li>
+                <li><strong>Import Streamlit:** Add the following line to the top of the file: <code>import streamlit as st</code></li>
+                <li><strong>Add a title:** Add the following line to display a title: <code>st.title("My First Streamlit App")</code></li>
+                <li><strong>Add some text:** Add the following line to display some text: <code>st.write("Hello, world!")</code></li>
+                <li><strong>Run the app:** Open your terminal, navigate to your project directory, and run the following command: <code>streamlit run my_app.py</code></li>
+            </ul>
+
+            <h3>3.2 Adding Interactive Elements:</h3>
+            <ul>
+                <li><strong>Add a slider:** Add the following line to add a slider: <code>age = st.slider("How old are you?", 0, 130, 25)</code></li>
+                <li><strong>Display the selected value:** Add the following line to display the selected value: <code>st.write("You're", age, "years old.")</code></li>
+                <li><strong>Add a button:** Add the following lines to add a button:
+                    <pre><code>if st.button("Say hello"):
+    st.write("Hello!")</code></pre>
+                </li>
+            </ul>
+
+            <h3>3.3 Displaying Data:</h3>
+            <ul>
+                <li><strong>Create a simple Pandas DataFrame:**
+                    <pre><code>import pandas as pd
+data = {'col1': [1, 2], 'col2': [3, 4]}
+df = pd.DataFrame(data)</code></pre>
+                </li>
+                <li><strong>Display the DataFrame:** Add the following line to display the DataFrame: <code>st.dataframe(df)</code></li>
+            </ul>
+
+            <h3>3.4 Adding a Chart:</h3>
+            <ul>
+                <li><strong>Generate some random data:**
+                    <pre><code>import numpy as np
+chart_data = pd.DataFrame(
+    np.random.randn(20, 3),
+    columns=['a', 'b', 'c'])</code></pre>
+                </li>
+                <li><strong>Create a line chart:** Add the following line to create a line chart: <code>st.line_chart(chart_data)</code></li>
+            </ul>
+        </div>
+
+        <div class="box" onclick="toggleContent('part4')">
+            <h2><i class="fas fa-rocket"></i> Part 4: Advanced Topics (Optional)</h2>
+        </div>
+        <div id="part4" class="content">
+            <h3>4.1 Streamlit Components:</h3>
+            <p>Streamlit offers a variety of components for displaying different types of data and creating interactive elements. Some examples include <code>st.map</code> for displaying maps, <code>st.plotly_chart</code> for displaying Plotly charts, and <code>st.vega_lite_chart</code> for displaying Vega-Lite charts.</p>
+
+            <h3>4.2 State Management:</h3>
+            <p><code>st.session_state</code> allows you to persist data across reruns of your Streamlit app. This is useful for storing user input, caching data, and managing the state of your application.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code>if 'count' not in st.session_state:
+    st.session_state.count = 0
+
+def increment_count():
+    st.session_state.count += 1
+
+st.button('Increment', on_click=increment_count)
+st.write('Count = %i' % st.session_state.count)</code></pre>
+
+            <h3>4.3 Deploying Streamlit Apps:</h3>
+            <p>Streamlit Cloud provides a simple and easy way to deploy your Streamlit apps to the web. You can also deploy your apps to other platforms such as Heroku or AWS.</p>
+        </div>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>This training document has provided a basic introduction to Streamlit prototyping using VS Code and Cline. You have learned how to set up your environment, use helpful tools, and create simple Streamlit apps with interactive elements and data displays.</p>
+    <p>We encourage you to continue exploring the Streamlit documentation and VS Code features to further enhance your prototyping skills.</p>
+
+    <h2>Additional Resources:</h2>
+    <ul>
+        <li>Streamlit documentation: <a href="https://docs.streamlit.io/">https://docs.streamlit.io/</a></li>
+        <li>VS Code documentation: <a href="https://code.visualstudio.com/docs">https://code.visualstudio.com/docs</a></li>
+        <li>Streamlit tutorials: <a href="https://streamlit.io/tutorials">https://streamlit.io/tutorials</a></li>
+    </ul>
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
